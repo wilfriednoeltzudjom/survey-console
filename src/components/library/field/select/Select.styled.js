@@ -58,6 +58,14 @@ export default styled.div`
           color: ${colors.input.placeholder};
         }
 
+        &.green {
+          background-color: ${colors.green};
+        }
+
+        &.red {
+          background-color: ${colors.red};
+        }
+
         > aside {
           justify-self: flex-end;
           display: flex;
@@ -112,10 +120,23 @@ export default styled.div`
           background: rgba(195, 186, 133, 0.1);
         }
 
-        &.selected {
-          background: ${colors.secondary};
+        &.green {
+          background: ${colors.green};
           color: ${colors.white};
           font-weight: 500;
+        }
+
+        &.red {
+          background: ${colors.red};
+          color: ${colors.white};
+          font-weight: 500;
+        }
+
+        &.green:hover {
+          background: rgba(80, 200, 120, 0.8);
+        }
+        &.red:hover {
+          background: rgba(255, 38, 38, 0.8);
         }
       }
     }

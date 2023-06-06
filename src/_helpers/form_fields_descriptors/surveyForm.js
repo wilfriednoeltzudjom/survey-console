@@ -5,12 +5,13 @@ import {
   LABEL_BIRTHDATE,
   LABEL_BUILDING_AGE,
   LABEL_CITY,
+  LABEL_COMMENTS,
   LABEL_FIREPLACE_INCLUDED,
-  LABEL_FIRST_NAME,
+  LABEL_FULL_NAME,
   LABEL_HEATING_TYPE,
-  LABEL_LAST_NAME,
   LABEL_LIVING_SPACE_AREA,
   LABEL_LOFT_AREA,
+  LABEL_LOFT_COMMENTS,
   LABEL_LOFT_INCLUDED,
   LABEL_LOFT_INSULATED,
   LABEL_LOFT_INSULATION_PERIOD,
@@ -20,6 +21,7 @@ import {
   LABEL_NUMBER_OF_DEPENDENTS,
   LABEL_OIL_HEATING_TYPE_BOILER,
   LABEL_ONE_EURO_BENEFICIARY,
+  LABEL_OPERATION_TYPE,
   LABEL_OWNING_TYPE,
   LABEL_PHONE_NUMBER,
   LABEL_POSTAL_CODE,
@@ -37,15 +39,15 @@ import {
 export default function ({ language = LANGUAGES.FR } = {}) {
   return [
     {
-      property: 'lastName',
+      property: 'operationType',
       type: 'string',
-      label: LABEL_LAST_NAME({ language }),
+      label: LABEL_OPERATION_TYPE({ language }),
       required: true,
     },
     {
-      property: 'firstName',
+      property: 'fullName',
       type: 'string',
-      label: LABEL_FIRST_NAME({ language }),
+      label: LABEL_FULL_NAME({ language }),
       required: true,
     },
     {
@@ -97,6 +99,11 @@ export default function ({ language = LANGUAGES.FR } = {}) {
       required({ loftInsulated }) {
         return loftInsulated;
       },
+    },
+    {
+      property: 'loftComments',
+      type: 'string',
+      label: LABEL_LOFT_COMMENTS({ language }),
     },
     {
       property: 'mprBeneficiary',
@@ -232,7 +239,7 @@ export default function ({ language = LANGUAGES.FR } = {}) {
       },
     },
     {
-      property: 'basementAreForBoiler',
+      property: 'basementAreaForBoiler',
       type: 'boolean',
       label: LABEL_BASEMENT_AREA_FOR_BOILER({ language }),
       required({ basementIncluded }) {
@@ -259,8 +266,8 @@ export default function ({ language = LANGUAGES.FR } = {}) {
     },
     {
       property: 'comments',
-      type: 'comments',
-      label: LABEL_PHONE_NUMBER({ language }),
+      type: 'string',
+      label: LABEL_COMMENTS({ language }),
     },
   ];
 }

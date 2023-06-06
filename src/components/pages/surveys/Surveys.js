@@ -71,7 +71,6 @@ function Surveys() {
   }
 
   function processDeleteSurvey(survey) {
-    console.log({ survey });
     hideAlert();
     dispatch(deleteSurvey({ surveyId: survey.id }));
   }

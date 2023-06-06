@@ -49,7 +49,7 @@ export function Select({ id, name, label, placeholder = LABEL_SELECT(), comment,
             {comment && <span>({comment})</span>}
           </label>
         )}
-        <div className={getInputClassName(displayedValue, shown)} id={id} onClick={handleClick}>
+        <div className={getInputClassName(displayedValue, shown, selectedOption)} id={id} onClick={handleClick}>
           {displayedValue && <span className={getContentClassName(selectedOption)}>{displayedValue}</span>}
           <aside>
             {isNonEmptyObject(selectedOption) && clearIconShown && <Icon className="icon-close" name="close" colorScheme="primary" animated onClick={handleClear} />}
@@ -88,15 +88,18 @@ Select.propTypes = {
   onChange: PropTypes.func,
 };
 
-function getInputClassName(displayedValue, shown) {
+function getInputClassName(displayedValue, shown, selectedOption) {
   const contentClassName = displayedValue ? 'content' : '';
   const focusClassName = shown ? 'focused' : '';
+  const optionClassName = selectedOption?.colorScheme || '';
 
-  return joinClassNames(contentClassName, focusClassName);
+  return joinClassNames(contentClassName, focusClassName, optionClassName);
 }
 
 function getContentClassName(selectedOption) {
-  return isNonEmptyObject(selectedOption) ? 'content-option' : 'content-placeholder';
+  const className = isNonEmptyObject(selectedOption) ? 'content-option ' : 'content-placeholder ';
+
+  return className.concat(selectedOption?.colorScheme || '').trim();
 }
 
 function formatDisplayedValue(selectedOption, placeholder) {
@@ -104,5 +107,7 @@ function formatDisplayedValue(selectedOption, placeholder) {
 }
 
 function getOptionClassName(selectedOption, option) {
-  return selectedOption?.label === option.label ? 'selected' : '';
+  const className = selectedOption?.label === option.label ? 'selected ' : '';
+
+  return className.concat(option.colorScheme || '').trim();
 }

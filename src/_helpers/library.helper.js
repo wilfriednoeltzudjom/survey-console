@@ -1,6 +1,17 @@
 import colors from '../config/colors';
 import { isValidValue } from './dataValidator.helper';
-import { BUILDING_AGES, HEATING_TYPES, INSULATION_PERIODS, LOFT_TYPES, OWNING_TYPES, RADIATOR_TYPES, WATER_HEATING_TYPES, WALL_INSULATIONS, YES_NO } from './enums';
+import {
+  BUILDING_AGES,
+  HEATING_TYPES,
+  INSULATION_PERIODS,
+  LOFT_TYPES,
+  OWNING_TYPES,
+  RADIATOR_TYPES,
+  WATER_HEATING_TYPES,
+  WALL_INSULATIONS,
+  YES_NO,
+  OPERATION_TYPES,
+} from './enums';
 
 function assignAdditionalProps(props, additionalProps = {}) {
   Object.keys(additionalProps)
@@ -59,12 +70,15 @@ function createRipple(event) {
   button.appendChild(circle);
 }
 
-function formatSelectOptions(enums) {
-  return Object.values(enums).map(toSelectOption);
+function formatSelectOptions(enums, colorSchemes = {}) {
+  return Object.values(enums).map((value) => toSelectOption(value, colorSchemes));
 }
 
-function toSelectOption(value) {
-  return isValidValue(value) ? { label: translateSelectOption(value), value } : {};
+function toSelectOption(value, colorSchemes = {}) {
+  const option = isValidValue(value) ? { label: translateSelectOption(value), value } : {};
+  if (isValidValue(colorSchemes[value])) option.colorScheme = colorSchemes[value];
+
+  return option;
 }
 
 function translateSelectOption(value) {
@@ -96,6 +110,9 @@ function translateSelectOption(value) {
     [RADIATOR_TYPES.ELECTRIC]: 'Electrique',
     [YES_NO.YES]: 'Oui',
     [YES_NO.NO]: 'Non',
+    [OPERATION_TYPES.MPR]: 'MPR',
+    [OPERATION_TYPES.RENO]: 'RENO',
+    [OPERATION_TYPES.RAC]: 'RAC',
   }[value];
 }
 

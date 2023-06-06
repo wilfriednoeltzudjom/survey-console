@@ -58,9 +58,7 @@ export default function SurveysBody({ surveys = [], requesting = false, onPrintS
             sortable: true,
             formatter: surveyHelper.translateHouseholdSituation,
             render: ({ householdSituation }) => (
-              <Badge variant="ghost" colorScheme={surveyHelper.getHouseholdSituationColorScheme(householdSituation)}>
-                {surveyHelper.translateHouseholdSituation(householdSituation)}
-              </Badge>
+              <Badge colorScheme={surveyHelper.getHouseholdSituationColorScheme(householdSituation)}>{surveyHelper.translateHouseholdSituation(householdSituation)}</Badge>
             ),
           },
         ]}

@@ -43,6 +43,9 @@ export function LABEL_DELETE_ENTRY({ language = LANGUAGES.FR } = {}) {
   return { EN: 'You are about to delete an entry. Do you confirm this action?', FR: 'Vous êtes sur le point de supprimer une entrée. Confirmez-vous cette action ?' }[language];
 }
 
+export function LABEL_FULL_NAME({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Fullname', FR: 'Nom(s) et prénom(s)' }[language];
+}
 export function LABEL_LAST_NAME({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Lastname', FR: 'Nom(s)' }[language];
 }

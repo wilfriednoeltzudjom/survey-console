@@ -37,8 +37,8 @@ export const HOUSEHOLD_SITUATIONS = Object.freeze({
 });
 
 export const BUILDING_AGES = Object.freeze({
-  LESS_THAN_FIFTEEN_YEARS: 'LESS_THAN_FIFTEEN_YEARS',
   MORE_THAN_FIFTEEN_YEARS: 'MORE_THAN_FIFTEEN_YEARS',
+  LESS_THAN_FIFTEEN_YEARS: 'LESS_THAN_FIFTEEN_YEARS',
 });
 
 export const HEATING_TYPES = Object.freeze({
@@ -50,8 +50,8 @@ export const HEATING_TYPES = Object.freeze({
 });
 
 export const INSULATION_PERIODS = Object.freeze({
-  LESS_THAN_TEN_YEARS: 'LESS_THAN_TEN_YEARS',
   MORE_THAN_TEN_YEARS: 'MORE_THAN_TEN_YEARS',
+  LESS_THAN_TEN_YEARS: 'LESS_THAN_TEN_YEARS',
 });
 
 export const LOFT_TYPES = Object.freeze({
@@ -88,4 +88,10 @@ export const RADIATOR_TYPES = Object.freeze({
 export const YES_NO = Object.freeze({
   YES: true,
   NO: false,
+});
+
+export const OPERATION_TYPES = Object.freeze({
+  MPR: 'MPR',
+  RENO: 'RENO',
+  RAC: 'RAC',
 });

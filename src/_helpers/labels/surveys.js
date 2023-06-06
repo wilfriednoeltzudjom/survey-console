@@ -134,3 +134,9 @@ export function LABEL_PHONE_NUMBER({ language = LANGUAGES.FR } = {}) {
 export function LABEL_COMMENTS({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Commentaires' }[language];
 }
+export function LABEL_OPERATION_TYPE({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: 'Sélectionner une option' }[language];
+}
+export function LABEL_LOFT_COMMENTS({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: 'Commentaires sur les combles' }[language];
+}

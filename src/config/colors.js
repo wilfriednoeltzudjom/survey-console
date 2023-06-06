@@ -57,4 +57,5 @@ export default {
   blue: '#0000ff',
   yellow: '#ffea00',
   purple: '#bf40bf',
+  green: '#50c878',
 };

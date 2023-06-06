@@ -12,6 +12,7 @@ import {
   HEATING_TYPES,
   WATER_HEATING_TYPES,
   RADIATOR_TYPES,
+  OPERATION_TYPES,
 } from '../../../../_helpers/enums';
 import {
   LABEL_BASEMENT_AREA_FOR_BOILER,
@@ -21,11 +22,11 @@ import {
   LABEL_CITY,
   LABEL_COMMENTS,
   LABEL_FIREPLACE_INCLUDED,
-  LABEL_FIRST_NAME,
+  LABEL_FULL_NAME,
   LABEL_HEATING_TYPE,
-  LABEL_LAST_NAME,
   LABEL_LIVING_SPACE_AREA,
   LABEL_LOFT_AREA,
+  LABEL_LOFT_COMMENTS,
   LABEL_LOFT_INCLUDED,
   LABEL_LOFT_INSULATED,
   LABEL_LOFT_INSULATION_PERIOD,
@@ -35,6 +36,7 @@ import {
   LABEL_NUMBER_OF_DEPENDENTS,
   LABEL_OIL_HEATING_TYPE_BOILER,
   LABEL_ONE_EURO_BENEFICIARY,
+  LABEL_OPERATION_TYPE,
   LABEL_OWNING_TYPE,
   LABEL_PHONE_NUMBER,
   LABEL_POSTAL_CODE,
@@ -78,10 +80,20 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
     <Form>
       <Form.Body>
         <Form.Group>
-          <Field fluid type="text" name="lastName" label={LABEL_LAST_NAME()} defaultValue={formState.lastName} error={formErrors.lastName} onChange={onChange} />
+          <Field
+            fluid
+            type="select"
+            name="operationType"
+            label={LABEL_OPERATION_TYPE()}
+            options={formatSelectOptions(OPERATION_TYPES)}
+            defaultOption={toSelectOption(formState.operationType)}
+            error={formErrors.operationType}
+            disabled={mode === FORM_MODES.EDITION}
+            onChange={onChange}
+          />
         </Form.Group>
         <Form.Group>
-          <Field fluid type="text" name="firstName" label={LABEL_FIRST_NAME()} defaultValue={formState.firstName} error={formErrors.firstName} onChange={onChange} />
+          <Field fluid type="text" name="fullName" label={LABEL_FULL_NAME()} defaultValue={formState.fullName} error={formErrors.fullName} onChange={onChange} />
         </Form.Group>
         <Form.Group>
           <Field
@@ -89,7 +101,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="buildingAge"
             label={LABEL_BUILDING_AGE()}
-            options={formatSelectOptions(BUILDING_AGES)}
+            options={formatSelectOptions(BUILDING_AGES, { [BUILDING_AGES.MORE_THAN_FIFTEEN_YEARS]: 'green', [BUILDING_AGES.LESS_THAN_FIFTEEN_YEARS]: 'red' })}
             defaultOption={toSelectOption(formState.buildingAge)}
             error={formErrors.buildingAge}
             disabled={mode === FORM_MODES.EDITION}
@@ -114,7 +126,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="loftIncluded"
             label={LABEL_LOFT_INCLUDED()}
-            options={formatSelectOptions(YES_NO)}
+            options={formatSelectOptions(YES_NO, { [YES_NO.YES]: 'green', [YES_NO.NO]: 'red' })}
             defaultOption={toSelectOption(formState.loftIncluded)}
             error={formErrors.loftIncluded}
             disabled={mode === FORM_MODES.EDITION}
@@ -127,7 +139,12 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="loftType"
             label={LABEL_LOFT_TYPE()}
-            options={formatSelectOptions(LOFT_TYPES)}
+            options={formatSelectOptions(LOFT_TYPES, {
+              [LOFT_TYPES.LOST_ACCESSIBLE]: 'green',
+              [LOFT_TYPES.LOST_INACCESSIBLE]: 'red',
+              [LOFT_TYPES.FURNISHED]: 'red',
+              [LOFT_TYPES.CONVERTIBLE]: 'green',
+            })}
             defaultOption={toSelectOption(formState.loftType)}
             error={formErrors.loftType}
             disabled={mode === FORM_MODES.EDITION}
@@ -156,10 +173,21 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="loftInsulationPeriod"
             label={LABEL_LOFT_INSULATION_PERIOD()}
-            options={formatSelectOptions(INSULATION_PERIODS)}
+            options={formatSelectOptions(INSULATION_PERIODS, { [INSULATION_PERIODS.MORE_THAN_TEN_YEARS]: 'green', [INSULATION_PERIODS.LESS_THAN_TEN_YEARS]: 'red' })}
             defaultOption={toSelectOption(formState.loftInsulationPeriod)}
             error={formErrors.loftInsulationPeriod}
             disabled={mode === FORM_MODES.EDITION}
+            onChange={onChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Field
+            fluid
+            type="textarea"
+            name="loftComments"
+            label={LABEL_LOFT_COMMENTS()}
+            defaultValue={formState.loftComments}
+            error={formErrors.loftComments}
             onChange={onChange}
           />
         </Form.Group>
@@ -172,7 +200,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="mprBeneficiary"
             label={LABEL_MPR_BENEFICIARY()}
-            options={formatSelectOptions(YES_NO)}
+            options={formatSelectOptions(YES_NO, { [YES_NO.YES]: 'red', [YES_NO.NO]: 'green' })}
             defaultOption={toSelectOption(formState.mprBeneficiary)}
             error={formErrors.mprBeneficiary}
             disabled={mode === FORM_MODES.EDITION}
@@ -185,7 +213,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="oneEuroBeneficiary"
             label={LABEL_ONE_EURO_BENEFICIARY()}
-            options={formatSelectOptions(YES_NO)}
+            options={formatSelectOptions(YES_NO, { [YES_NO.YES]: 'red', [YES_NO.NO]: 'green' })}
             defaultOption={toSelectOption(formState.oneEuroBeneficiary)}
             error={formErrors.oneEuroBeneficiary}
             disabled={mode === FORM_MODES.EDITION}
@@ -307,7 +335,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="wallInsulationType"
             label={LABEL_WALL_INSULATION_TYPE()}
-            options={formatSelectOptions(WALL_INSULATIONS)}
+            options={formatSelectOptions(WALL_INSULATIONS, { [WALL_INSULATIONS.ITE]: 'red', [WALL_INSULATIONS.ITI]: 'red', [WALL_INSULATIONS.NONE]: 'green' })}
             defaultOption={toSelectOption(formState.wallInsulationType)}
             error={formErrors.wallInsulationType}
             disabled={mode === FORM_MODES.EDITION}
@@ -320,7 +348,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="heatingType"
             label={LABEL_HEATING_TYPE()}
-            options={formatSelectOptions(HEATING_TYPES)}
+            options={formatSelectOptions(HEATING_TYPES, { [HEATING_TYPES.WOOD]: 'green', [HEATING_TYPES.HEATING_PUMP]: 'red' })}
             defaultOption={toSelectOption(formState.heatingType)}
             error={formErrors.heatingType}
             disabled={mode === FORM_MODES.EDITION}
@@ -334,7 +362,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             name="oilHeatingTypeBoiler"
             label={LABEL_OIL_HEATING_TYPE_BOILER()}
             comment={SUB_LABEL_OIL_HEATING_TYPE_BOILER()}
-            options={formatSelectOptions(YES_NO)}
+            options={formatSelectOptions(YES_NO, { [YES_NO.YES]: 'red', [YES_NO.NO]: 'green' })}
             defaultOption={toSelectOption(formState.oilHeatingTypeBoiler)}
             error={formErrors.oilHeatingTypeBoiler}
             disabled={mode === FORM_MODES.EDITION}
@@ -386,7 +414,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="lowFloorInsulationPeriod"
             label={LABEL_LOW_FLOOR_INSULATION_PERIOD()}
-            options={formatSelectOptions(INSULATION_PERIODS)}
+            options={formatSelectOptions(INSULATION_PERIODS, { [INSULATION_PERIODS.MORE_THAN_TEN_YEARS]: 'green', [INSULATION_PERIODS.LESS_THAN_TEN_YEARS]: 'red' })}
             defaultOption={toSelectOption(formState.lowFloorInsulationPeriod)}
             error={formErrors.lowFloorInsulationPeriod}
             disabled={mode === FORM_MODES.EDITION}

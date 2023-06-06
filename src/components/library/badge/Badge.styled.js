@@ -42,5 +42,7 @@ function getBackground({ variant, colorScheme }) {
 }
 
 function getColor({ variant, colorScheme }) {
+  if (variant === 'filled' && colorScheme === 'yellow') return colors.black;
+
   return variant === 'filled' ? colors.white : colors[colorScheme];
 }
