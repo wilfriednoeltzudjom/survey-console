@@ -1,0 +1,83 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import surveyHelper from '../../../../_helpers/survey.helper';
+import {
+  LABEL_CREATED_AT,
+  LABEL_CUSTOMER,
+  LABEL_MENU_ACTION_DELETE,
+  LABEL_MENU_ACTION_PRINT,
+  LABEL_NO_SURVEYS,
+  LABEL_PREMIUM_PROFILE,
+  LABEL_REFERENCE,
+  LABEL_TAX_NOTICE_NUMBER,
+  LABEL_TAX_NOTICE_REFERENCE,
+} from '../../../../_helpers/labels';
+
+import { Badge, Card, Icon, Table } from '../../../library';
+
+export default function SurveysBody({ surveys = [], requesting = false, onPrintSurvey, onDeleteSurvey }) {
+  return (
+    <Card>
+      <Table
+        columns={[
+          {
+            title: LABEL_REFERENCE(),
+            key: 'reference',
+            dataIndex: 'reference',
+            dataType: 'code',
+            sortable: true,
+          },
+          {
+            title: LABEL_CREATED_AT(),
+            key: 'createdAt',
+            dataIndex: 'createdAt',
+            dataType: 'date',
+            sortable: true,
+          },
+          {
+            title: LABEL_CUSTOMER(),
+            key: 'customer',
+            dataIndex: 'customer',
+            sortable: true,
+          },
+          {
+            title: LABEL_TAX_NOTICE_NUMBER(),
+            key: 'taxNoticeNumber',
+            dataIndex: 'taxNoticeNumber',
+          },
+          {
+            title: LABEL_TAX_NOTICE_REFERENCE(),
+            key: 'taxNoticeReference',
+            dataIndex: 'taxNoticeReference',
+          },
+          {
+            title: LABEL_PREMIUM_PROFILE(),
+            key: 'householdSituation',
+            dataIndex: 'householdSituation',
+            sortable: true,
+            formatter: surveyHelper.translateHouseholdSituation,
+            render: ({ householdSituation }) => (
+              <Badge variant="ghost" colorScheme={surveyHelper.getHouseholdSituationColorScheme(householdSituation)}>
+                {surveyHelper.translateHouseholdSituation(householdSituation)}
+              </Badge>
+            ),
+          },
+        ]}
+        noDataMessage={LABEL_NO_SURVEYS()}
+        dataSource={surveys}
+        requesting={requesting}
+        actions={[
+          { icon: <Icon name="print" />, label: LABEL_MENU_ACTION_PRINT(), onClick: onPrintSurvey },
+          { icon: <Icon name="delete" />, label: LABEL_MENU_ACTION_DELETE(), onClick: onDeleteSurvey },
+        ]}
+      />
+    </Card>
+  );
+}
+SurveysBody.propTypes = {
+  surveys: PropTypes.arrayOf(PropTypes.shape({})),
+  requesting: PropTypes.bool,
+  onPrintSurvey: PropTypes.func.isRequired,
+  onDeleteSurvey: PropTypes.func.isRequired,
+};
