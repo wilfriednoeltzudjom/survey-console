@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import { HOUSEHOLD_SITUATIONS, MPR_PROFILES } from './enums';
 
 function translateMPRProfile(mprProfile) {
@@ -15,14 +17,10 @@ function getHouseholdSituationColorScheme(householdSituation) {
 function formatSurveysForTable(surveys = []) {
   return surveys.map((survey) => ({
     ...survey,
-    customer: formatCustomer(survey),
+    customer: survey.fullName,
     taxNoticeNumber: formatTaxNoticeNumber(survey),
     taxNoticeReference: formatTaxNoticeReference(survey),
   }));
-}
-
-function formatCustomer({ lastName, firstName }) {
-  return [lastName, firstName].join(' ');
 }
 
 function formatTaxNoticeNumber({ occupants: [occupant] = [] } = {}) {
@@ -33,4 +31,30 @@ function formatTaxNoticeReference({ occupants: [occupant] = [] } = {}) {
   return occupant?.taxNoticeReference;
 }
 
-export default { translateHouseholdSituation, translateMPRProfile, getHouseholdSituationColorScheme, formatSurveysForTable };
+function filterCurrentDaySurveysCount(surveys = []) {
+  return surveys.filter((survey) => {
+    return moment(survey.createdAt).isSame(moment(), 'day');
+  }).length;
+}
+
+function filterCurrentWeekSurveysCount(surveys = []) {
+  return surveys.filter((survey) => {
+    return moment(survey.createdAt).isBetween(moment().startOf('week'), moment().endOf('week'));
+  }).length;
+}
+
+function filterCurrentMonthSurveysCount(surveys = []) {
+  return surveys.filter((survey) => {
+    return moment(survey.createdAt).isBetween(moment().startOf('month'), moment().endOf('month'));
+  }).length;
+}
+
+export default {
+  translateHouseholdSituation,
+  translateMPRProfile,
+  getHouseholdSituationColorScheme,
+  formatSurveysForTable,
+  filterCurrentDaySurveysCount,
+  filterCurrentWeekSurveysCount,
+  filterCurrentMonthSurveysCount,
+};

@@ -62,7 +62,6 @@ function UnMemorizedTable({ columns, dataSource = [], actions, requesting = fals
     handleItemsCountPerPageChange,
     handleSortAscend,
     handleSortDesend,
-    handleSearch,
   } = useTable({
     dataSource,
     itemsCountPerPageOptions,
@@ -73,16 +72,6 @@ function UnMemorizedTable({ columns, dataSource = [], actions, requesting = fals
 
   return (
     <TableStyled {...props}>
-      <header>
-        <main>
-          <Field type="text" placeholder="Rechercher" icon={<Icon name="search" />} disabled={dataSource.length === 0} onChange={handleSearch} />
-        </main>
-        <aside>
-          <Button variant="outlined" icon={<Icon name="download" />} disabled={dataSource.length === 0}>
-            Export CSV
-          </Button>
-        </aside>
-      </header>
       <main>
         <table>
           <thead>

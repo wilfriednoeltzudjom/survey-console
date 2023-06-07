@@ -14,6 +14,9 @@ export function LABEL_SIGN_IN({ language = LANGUAGES.FR } = {}) {
 export function LABEL_SIGN_UP({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Sign up', FR: 'Inscription' }[language];
 }
+export function LABEL_WELCOME_BACK({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Welcome back', FR: 'Bon retour' }[language];
+}
 
 export function LABEL_SIGN_IN_SUB_TITLE({ language = LANGUAGES.FR } = {}) {
   return {
@@ -61,11 +64,11 @@ export function LABEL_EMAIL({ language = LANGUAGES.FR } = {}) {
 export function LABEL_PASSWORD({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Password', FR: 'Mot de passe' }[language];
 }
-export function LABEL_INPUT_CONFIRM_PASSWORD({ language = LANGUAGES.FR } = {}) {
+export function LABEL_CONFIRM_PASSWORD({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Confirm password', FR: 'Confirmation du mot de passe' }[language];
 }
-export function LABEL_INPUT_COMPANY_NAME({ language = LANGUAGES.FR } = {}) {
-  return { EN: 'Company name', FR: "Nom de l'entreprise" }[language];
+export function LABEL_PASSWORDS_ARE_DIFFERENT({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Your passwords does not match', FR: 'Mots de passe différents' }[language];
 }
 export function LABEL_INPUT_ADDRESS({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Address', FR: 'Adresse' }[language];
@@ -159,6 +162,9 @@ export function LABEL_WEEKLY({ language = LANGUAGES.FR } = {}) {
 }
 export function LABEL_MONTHLY({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Month', FR: 'Ce mois' }[language];
+}
+export function LABEL_TOTAL({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Total', FR: 'Total' }[language];
 }
 
 export function LABEL_CREATED_AT({ language = LANGUAGES.FR } = {}) {

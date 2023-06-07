@@ -22,6 +22,9 @@ export function LABEL_TAX_NOTICE_REFERENCE({ language = LANGUAGES.FR } = {}) {
 export function LABEL_PREMIUM_PROFILE({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Profile', FR: 'Profil' }[language];
 }
+export function LABEL_CREATED_BY({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Created by', FR: 'Créé par' }[language];
+}
 
 export function LABEL_DELETE_SURVEY({ survey, language = LANGUAGES.FR } = {}) {
   return {
@@ -139,4 +142,8 @@ export function LABEL_OPERATION_TYPE({ language = LANGUAGES.FR } = {}) {
 }
 export function LABEL_LOFT_COMMENTS({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Commentaires sur les combles' }[language];
+}
+
+export function LABEL_SURVEYS_SUBTITLE({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Last survey created on', FR: 'Dernier formulaire enregistré le' }[language];
 }

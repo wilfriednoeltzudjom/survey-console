@@ -476,7 +476,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
 
       <Form.Footer>
         <Form.Group>
-          <Button colorScheme="secondary" onClick={handleSubmit}>
+          <Button disabled={requesting} colorScheme="secondary" onClick={handleSubmit}>
             {LABEL_SAVE()}
           </Button>
         </Form.Group>

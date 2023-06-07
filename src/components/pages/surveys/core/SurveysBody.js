@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import surveyHelper from '../../../../_helpers/survey.helper';
 import {
   LABEL_CREATED_AT,
+  LABEL_CREATED_BY,
   LABEL_CUSTOMER,
   LABEL_MENU_ACTION_DELETE,
   LABEL_MENU_ACTION_PRINT,
@@ -13,10 +14,26 @@ import {
   LABEL_TAX_NOTICE_NUMBER,
   LABEL_TAX_NOTICE_REFERENCE,
 } from '../../../../_helpers/labels';
+import { isNonEmptyObject } from '../../../../_helpers/dataValidator.helper';
+import { ROLES } from '../../../../_helpers/enums';
 
-import { Badge, Card, Icon, Table } from '../../../library';
+import { Badge, Card, Icon, Table, Text } from '../../../library';
 
-export default function SurveysBody({ surveys = [], requesting = false, onPrintSurvey, onDeleteSurvey }) {
+export default function SurveysBody({ surveys = [], requesting = false, profile = {}, onPrintSurvey, onDeleteSurvey }) {
+  const additionColumns = [];
+  if (profile?.role === ROLES.ADMINISTRATOR) {
+    additionColumns.push({
+      title: LABEL_CREATED_BY(),
+      key: 'createdBy',
+      dataIndex: 'createdBy',
+      sortable: true,
+      formatter: formatCreatedBy,
+      render({ createdBy = {} }) {
+        return <Text weight="medium">{formatCreatedBy(createdBy)}</Text>;
+      },
+    });
+  }
+
   return (
     <Card>
       <Table
@@ -61,6 +78,7 @@ export default function SurveysBody({ surveys = [], requesting = false, onPrintS
               <Badge colorScheme={surveyHelper.getHouseholdSituationColorScheme(householdSituation)}>{surveyHelper.translateHouseholdSituation(householdSituation)}</Badge>
             ),
           },
+          ...additionColumns,
         ]}
         noDataMessage={LABEL_NO_SURVEYS()}
         dataSource={surveys}
@@ -76,6 +94,11 @@ export default function SurveysBody({ surveys = [], requesting = false, onPrintS
 SurveysBody.propTypes = {
   surveys: PropTypes.arrayOf(PropTypes.shape({})),
   requesting: PropTypes.bool,
+  profile: PropTypes.shape({}),
   onPrintSurvey: PropTypes.func.isRequired,
   onDeleteSurvey: PropTypes.func.isRequired,
 };
+
+function formatCreatedBy(createdBy) {
+  return isNonEmptyObject(createdBy) ? createdBy.lastName : '';
+}

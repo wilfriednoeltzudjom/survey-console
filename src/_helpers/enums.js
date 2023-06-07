@@ -95,3 +95,8 @@ export const OPERATION_TYPES = Object.freeze({
   RENO: 'RENO',
   RAC: 'RAC',
 });
+
+export const ROLES = Object.freeze({
+  ADMINISTRATOR: 'ADMINISTRATOR',
+  OPERATOR: 'OPERATOR',
+});

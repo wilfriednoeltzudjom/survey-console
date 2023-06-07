@@ -3,6 +3,7 @@ import reduxLogger from 'redux-logger';
 
 import authReducer from './auth/auth.slice';
 import surveysReducer from './surveys/surveys.slice';
+import accountsReducer from './accounts/accounts.slice';
 
 import loadingReducer from './ui/loading.slice';
 import formReducer from './ui/form.slice';
@@ -17,6 +18,7 @@ export function initStore({ preloadedState = {} } = {}) {
       core: combineReducers({
         authState: authReducer,
         surveysState: surveysReducer,
+        accountsState: accountsReducer,
       }),
       ui: combineReducers({
         loadingState: loadingReducer,

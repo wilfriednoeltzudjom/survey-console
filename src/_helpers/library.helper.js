@@ -11,6 +11,7 @@ import {
   WALL_INSULATIONS,
   YES_NO,
   OPERATION_TYPES,
+  ROLES,
 } from './enums';
 
 function assignAdditionalProps(props, additionalProps = {}) {
@@ -113,6 +114,8 @@ function translateSelectOption(value) {
     [OPERATION_TYPES.MPR]: 'MPR',
     [OPERATION_TYPES.RENO]: 'RENO',
     [OPERATION_TYPES.RAC]: 'RAC',
+    [ROLES.ADMINISTRATOR]: 'Administrateur',
+    [ROLES.OPERATOR]: 'Opérateur',
   }[value];
 }
 
