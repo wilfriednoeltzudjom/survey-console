@@ -120,7 +120,7 @@ export function LABEL_LOW_FLOOR_INSULATION_PERIOD({ language = LANGUAGES.FR } = 
   return { EN: '', FR: 'Si oui, est-ce que le plancher bas est isolé ?' }[language];
 }
 export function LABEL_BASEMENT_AREA_FOR_BOILER({ language = LANGUAGES.FR } = {}) {
-  return { EN: '', FR: "Est ce qu'il y a un espace de sous sol de 1.9m de hauteur et 2m² de surface pour une chaudière a granulés ?" }[language];
+  return { EN: '', FR: "Y'a t'il une cave, un local technique ou un garage de 1.9m de hauteur et 2m² de surface pour mettre une chaudière a granulés ?" }[language];
 }
 export function LABEL_RADIATOR_TYPE({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Si radiateur, quel type ?' }[language];

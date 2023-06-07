@@ -348,7 +348,13 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="heatingType"
             label={LABEL_HEATING_TYPE()}
-            options={formatSelectOptions(HEATING_TYPES, { [HEATING_TYPES.WOOD]: 'green', [HEATING_TYPES.HEATING_PUMP]: 'red' })}
+            options={formatSelectOptions(HEATING_TYPES, {
+              [HEATING_TYPES.WOOD]: 'green',
+              [HEATING_TYPES.GAS]: 'green',
+              [HEATING_TYPES.OIL]: 'green',
+              [HEATING_TYPES.HEATING_PUMP]: 'red',
+              [HEATING_TYPES.ELECTRICITY]: 'red',
+            })}
             defaultOption={toSelectOption(formState.heatingType)}
             error={formErrors.heatingType}
             disabled={mode === FORM_MODES.EDITION}
@@ -427,7 +433,7 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
             type="select"
             name="basementAreaForBoiler"
             label={LABEL_BASEMENT_AREA_FOR_BOILER()}
-            options={formatSelectOptions(YES_NO)}
+            options={formatSelectOptions(YES_NO, { [YES_NO.YES]: 'green', [YES_NO.NO]: 'red' })}
             defaultOption={toSelectOption(formState.basementAreaForBoiler)}
             error={formErrors.basementAreaForBoiler}
             disabled={mode === FORM_MODES.EDITION}
