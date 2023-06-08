@@ -1,10 +1,10 @@
 import { LANGUAGES } from '../enums';
 
 export function LABELS_SURVEYS({ language = LANGUAGES.FR } = {}) {
-  return { EN: 'Surveys', FR: 'Questionnaires' }[language];
+  return { EN: 'Surveys', FR: 'Formulaires' }[language];
 }
 export function LABEL_CREATE_SURVEY({ language = LANGUAGES.FR } = {}) {
-  return { EN: 'New survey', FR: 'Nouveau questionnaire' }[language];
+  return { EN: 'New survey', FR: 'Nouveau formulaire' }[language];
 }
 
 export function LABEL_REFERENCE({ language = LANGUAGES.FR } = {}) {
@@ -29,7 +29,7 @@ export function LABEL_CREATED_BY({ language = LANGUAGES.FR } = {}) {
 export function LABEL_DELETE_SURVEY({ survey, language = LANGUAGES.FR } = {}) {
   return {
     EN: `You are about to delete survey <b>${survey.reference}</b>. Do you confirm this action?`,
-    FR: `Vous êtes sur le point de supprimer le questionnaire <b>${survey.reference}</b>. Confirmez-vous cette action ?`,
+    FR: `Vous êtes sur le point de supprimer le formulaire <b>${survey.reference}</b>. Confirmez-vous cette action ?`,
   }[language];
 }
 

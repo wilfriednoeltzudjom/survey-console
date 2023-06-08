@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createAccount, deleteAccount, getAccounts } from '../../../store/accounts/accounts.slice';
 import { FORM_MODES } from '../../../_helpers/enums';
-import { LABEL_DELETE, LABEL_DELETE_SURVEY, MODAL_TITLE_SURVEY } from '../../../_helpers/labels';
+import { LABEL_DELETE, LABEL_DELETE_ACCOUNT, MODAL_TITLE_SURVEY } from '../../../_helpers/labels';
 import { isNonEmptyObject } from '../../../_helpers/dataValidator.helper';
 import formValidatorHelper from '../../../_helpers/formValidator.helper';
 import { accountFormFieldsDescriptor } from '../../../_helpers/form_fields_descriptors';
@@ -45,7 +45,7 @@ function Accounts() {
 
   function handleDeleteAccount(account) {
     showAlert({
-      message: LABEL_DELETE_SURVEY({ account }),
+      message: LABEL_DELETE_ACCOUNT({ account }),
       actions: (
         <Button colorScheme="red" onClick={() => processDeleteAccount(account)}>
           {LABEL_DELETE()}

@@ -145,7 +145,7 @@ export function LABEL_MENU_DETAILS({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Details', FR: 'Détails' }[language];
 }
 export function LABEL_MENU_SURVEYS({ language = LANGUAGES.FR } = {}) {
-  return { EN: 'Surveys', FR: 'Questionnaires' }[language];
+  return { EN: 'Surveys', FR: 'Formulaires' }[language];
 }
 export function LABEL_MENU_ACCOUNTS({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Accounts', FR: 'Comptes' }[language];

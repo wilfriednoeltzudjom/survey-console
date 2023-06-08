@@ -18,3 +18,9 @@ export function LABEL_NO_ACCOUNTS({ language = LANGUAGES.FR } = {}) {
 export function LABEL_ROLE({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Role', FR: 'Rôle' }[language];
 }
+export function LABEL_DELETE_ACCOUNT({ account, language = LANGUAGES.FR } = {}) {
+  return {
+    EN: `You are about to delete account <b>${account.email}</b>. Do you confirm this action?`,
+    FR: `Vous êtes sur le point de supprimer le compte <b>${account.email}</b>. Confirmez-vous cette action ?`,
+  }[language];
+}
