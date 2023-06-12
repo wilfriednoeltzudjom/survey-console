@@ -1,8 +1,10 @@
+const primary = '#1351D8';
+
 export default {
-  primary: '#5A4C43 ',
-  primaryLight: '#BB8760',
-  primaryDark: '#2D2621',
-  primaryOverlay: 'rgba(90, 76, 67, 0.2)',
+  primary,
+  primaryLight: '##0071EC',
+  primaryDark: '#0032B0',
+  primaryOverlay: 'rgba(19, 81, 216, 0.2)',
   secondary: '#C3BA85',
   secondaryLight: '#D9CC7E',
   secondaryDark: '#799351',
@@ -31,7 +33,7 @@ export default {
   progressBar: '#E1D5C7',
   table: {
     border: '#F5F4F3',
-    header: '#5A4C43',
+    header: primary,
     cell: {
       default: '#FFFFFF',
       filled: '#FCF6EF',
@@ -40,7 +42,7 @@ export default {
   scrollbar: {
     background: '#FFFDFA',
     thumb: {
-      default: '#5A4C43',
+      default: primary,
       hover: '#BB8760',
     },
   },
