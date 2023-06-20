@@ -5,12 +5,12 @@ import { TABLE_SORTING_ORDERS } from '../../../../_helpers/enums';
 
 export default function ({ dataSource = [], itemsCountPerPageOptions, onSearch, onResetSearch }) {
   const [currentItems, setCurrentItems] = useState([]);
-  const [currentItemsCountPerPage, setCurrentItemsCountPerPage] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentItemsCountPerPage, setCurrentItemsCountPerPage] = useState(itemsCountPerPageOptions[0]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(0);
   const [currentSearchString, setCurrentSearchString] = useState('');
 
-  function updateCurentItems(formattedDataSource = [], page = 1, itemsCountPerPage = itemsCountPerPageOptions[0]) {
+  function updateCurentItems(formattedDataSource = [], page = currentPage, itemsCountPerPage = currentItemsCountPerPage) {
     const startIndex = (page - 1) * itemsCountPerPage;
     const endIndex = startIndex + itemsCountPerPage;
     setCurrentItems(formattedDataSource.slice(startIndex, endIndex));
@@ -18,7 +18,7 @@ export default function ({ dataSource = [], itemsCountPerPageOptions, onSearch, 
     if (itemsCountPerPage !== currentItemsCountPerPage) setCurrentItemsCountPerPage(itemsCountPerPage);
   }
 
-  function updatePageCount(formattedDataSource = [], itemsCountPerPage = itemsCountPerPageOptions[0]) {
+  function updatePageCount(formattedDataSource = [], itemsCountPerPage = currentItemsCountPerPage) {
     const pagesCountDecimalValue = formattedDataSource.length / itemsCountPerPage;
     const pagesCountRoundedValue = formattedDataSource.length % itemsCountPerPage === 0 ? pagesCountDecimalValue : Math.ceil(pagesCountDecimalValue);
     setPagesCount(pagesCountRoundedValue);
