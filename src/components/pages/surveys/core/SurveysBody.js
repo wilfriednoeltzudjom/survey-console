@@ -8,18 +8,19 @@ import {
   LABEL_CUSTOMER,
   LABEL_MENU_ACTION_DELETE,
   LABEL_MENU_ACTION_PRINT,
+  LABEL_MENU_ACTION_REGENERATE,
   LABEL_NO_SURVEYS,
   LABEL_PREMIUM_PROFILE,
   LABEL_REFERENCE,
   LABEL_TAX_NOTICE_NUMBER,
   LABEL_TAX_NOTICE_REFERENCE,
 } from '../../../../_helpers/labels';
-import { isNonEmptyObject } from '../../../../_helpers/dataValidator.helper';
+import { isNonEmptyObject, isNonEmptyString, isNullishOrEmpty } from '../../../../_helpers/dataValidator.helper';
 import { ROLES } from '../../../../_helpers/enums';
 
 import { Badge, Card, Icon, Table, Text } from '../../../library';
 
-export default function SurveysBody({ surveys = [], requesting = false, profile = {}, onPrintSurvey, onDeleteSurvey }) {
+export default function SurveysBody({ surveys = [], requesting = false, profile = {}, onPrintSurvey, onGenerateSurveyReport, onDeleteSurvey }) {
   const additionColumns = [];
   if (profile?.role === ROLES.ADMINISTRATOR) {
     additionColumns.push({
@@ -84,7 +85,22 @@ export default function SurveysBody({ surveys = [], requesting = false, profile 
         dataSource={surveys}
         requesting={requesting}
         actions={[
-          { icon: <Icon name="print" />, label: LABEL_MENU_ACTION_PRINT(), onClick: onPrintSurvey },
+          {
+            icon: <Icon name="print" />,
+            label: LABEL_MENU_ACTION_PRINT(),
+            isDisabled(survey) {
+              return isNullishOrEmpty(survey.fileUrl);
+            },
+            onClick: onPrintSurvey,
+          },
+          {
+            icon: <Icon name="refresh" />,
+            label: LABEL_MENU_ACTION_REGENERATE(),
+            isDisabled(survey) {
+              return isNonEmptyString(survey.fileUrl);
+            },
+            onClick: onGenerateSurveyReport,
+          },
           { icon: <Icon name="delete" />, label: LABEL_MENU_ACTION_DELETE(), onClick: onDeleteSurvey },
         ]}
       />
@@ -96,6 +112,7 @@ SurveysBody.propTypes = {
   requesting: PropTypes.bool,
   profile: PropTypes.shape({}),
   onPrintSurvey: PropTypes.func.isRequired,
+  onGenerateSurveyReport: PropTypes.func.isRequired,
   onDeleteSurvey: PropTypes.func.isRequired,
 };
 

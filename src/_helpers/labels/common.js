@@ -127,6 +127,9 @@ export function LABEL_MENU_ACTION_EDIT({ language = LANGUAGES.FR } = {}) {
 export function LABEL_MENU_ACTION_PRINT({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Print', FR: 'Imprimer' }[language];
 }
+export function LABEL_MENU_ACTION_REGENERATE({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Regenerate', FR: 'Régénérer' }[language];
+}
 export function LABEL_MENU_ACTION_DELETE({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Delete', FR: 'Supprimer' }[language];
 }

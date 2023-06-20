@@ -20,4 +20,8 @@ async function deleteSurvey(surveyId) {
   return httpClient.delete(getSurveyBaseUrl(surveyId));
 }
 
-export default { createSurvey, getSurveys, deleteSurvey };
+async function generateSurveyReport(surveyId) {
+  return httpClient.put(getSurveyBaseUrl(surveyId).concat('/generate'));
+}
+
+export default { createSurvey, getSurveys, deleteSurvey, generateSurveyReport };

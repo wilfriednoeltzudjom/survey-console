@@ -37,6 +37,7 @@ Icon.propTypes = {
     'account',
     'logout',
     'print',
+    'refresh',
   ]).isRequired,
   variant: PropTypes.oneOf(['outlined', 'filled']),
   className: PropTypes.string,

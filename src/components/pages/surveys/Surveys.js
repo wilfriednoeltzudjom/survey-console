@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createSurvey, deleteSurvey, getSurveys } from '../../../store/surveys/surveys.slice';
+import { createSurvey, deleteSurvey, generateSurveyReport, getSurveys } from '../../../store/surveys/surveys.slice';
 import { FORM_MODES } from '../../../_helpers/enums';
 import { LABEL_DELETE, LABEL_DELETE_SURVEY, MODAL_TITLE_SURVEY } from '../../../_helpers/labels';
 import { isNonEmptyObject } from '../../../_helpers/dataValidator.helper';
@@ -48,6 +48,10 @@ function Surveys() {
     browserHelper.openUrlInNewTab(survey.fileUrl);
   }
 
+  function handleGenerateSurveyReport(survey) {
+    dispatch(generateSurveyReport({ surveyId: survey.id }));
+  }
+
   function handleDeleteSurvey(survey) {
     showAlert({
       message: LABEL_DELETE_SURVEY({ survey }),
@@ -88,6 +92,7 @@ function Surveys() {
           requesting={requesting}
           profile={profile}
           onPrintSurvey={handlePrintSurvey}
+          onGenerateSurveyReport={handleGenerateSurveyReport}
           onDeleteSurvey={handleDeleteSurvey}
         />
       </SurveysStyled>

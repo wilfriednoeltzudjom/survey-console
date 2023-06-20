@@ -60,6 +60,24 @@ export const deleteSurvey = createAsyncThunk('surveys/deleteSurvey', async ({ su
   }
 });
 
+export const generateSurveyReport = createAsyncThunk('surveys/generateSurveyReport', async ({ surveyId }, { dispatch, rejectWithValue }) => {
+  dispatch(startRequesting());
+
+  try {
+    const {
+      data: { data: survey, message },
+    } = await surveysService.generateSurveyReport(surveyId);
+    dispatch(stopRequesting());
+    dispatch(showSuccessDialog({ message }));
+
+    return { survey };
+  } catch (error) {
+    processHttpErrorResponse({ dispatch, error });
+
+    return rejectWithValue(error?.response?.data);
+  }
+});
+
 const surveysSlice = createSlice({
   name: 'surveys',
   initialState,
@@ -82,6 +100,16 @@ const surveysSlice = createSlice({
 
     builder.addCase(deleteSurvey.fulfilled, (state, { payload }) => {
       state.surveys = state.surveys.filter((survey) => survey.id !== payload.survey.id);
+    });
+
+    builder.addCase(generateSurveyReport.fulfilled, (state, { payload }) => {
+      state.surveys = state.surveys.map((survey) => {
+        if (survey.id === payload.survey.id) {
+          return { ...survey, ...payload.survey };
+        }
+
+        return survey;
+      });
     });
   },
 });
