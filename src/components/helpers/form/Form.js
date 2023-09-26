@@ -11,6 +11,7 @@ import FormStyled, {
   FormFooterStyled,
   FormDivider,
   FormText,
+  FormSection,
 } from './Form.styled';
 
 export function Form({ variant = 'private', children, onSubmit }) {
@@ -40,6 +41,7 @@ Form.Footer = FormFooterStyled;
 Form.Row = FormRowStyled;
 Form.Divider = FormDivider;
 Form.Text = FormText;
+Form.Section = FormSection;
 
 function FormGroup({ fluid = false, variant = '', justify = '', children }) {
   const props = { fluid, variant, justify };

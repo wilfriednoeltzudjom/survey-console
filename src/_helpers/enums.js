@@ -100,3 +100,9 @@ export const ROLES = Object.freeze({
   ADMINISTRATOR: 'ADMINISTRATOR',
   OPERATOR: 'OPERATOR',
 });
+
+export const INSULATION_TYPES = Object.freeze({
+  LOFT: 'LOFT',
+  BASEMENT: 'BASEMENT',
+  WALL: 'WALL',
+});

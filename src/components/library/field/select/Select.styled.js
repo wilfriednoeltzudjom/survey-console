@@ -126,6 +126,18 @@ export default styled.div`
           font-weight: 500;
         }
 
+        &.gold {
+          background: ${colors.gold};
+          color: ${colors.white};
+          font-weight: 500;
+        }
+
+        &.silver {
+          background: ${colors.silver};
+          color: ${colors.white};
+          font-weight: 500;
+        }
+
         &.red {
           background: ${colors.red};
           color: ${colors.white};
@@ -134,6 +146,12 @@ export default styled.div`
 
         &.green:hover {
           background: rgba(80, 200, 120, 0.8);
+        }
+        &.gold:hover {
+          background: rgba(255, 215, 0, 0.8);
+        }
+        &.silver:hover {
+          background: rgba(192, 192, 192, 0.8);
         }
         &.red:hover {
           background: rgba(255, 38, 38, 0.8);

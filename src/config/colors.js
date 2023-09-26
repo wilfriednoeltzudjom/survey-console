@@ -60,4 +60,6 @@ export default {
   yellow: '#ffea00',
   purple: '#bf40bf',
   green: '#50c878',
+  gold: '#ffd700',
+  silver: '#c0c0c0',
 };

@@ -78,7 +78,7 @@ export function LABEL_BIRTHDATE({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Date de naissance' }[language];
 }
 export function LABEL_NUMBER_OF_DEPENDENTS({ language = LANGUAGES.FR } = {}) {
-  return { EN: '', FR: 'Nombre de parts dans le foyer' }[language];
+  return { EN: '', FR: "Nombre de parts dans le foyer (nombre d'occupants)" }[language];
 }
 export function LABEL_STREET_NUMBER({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Numéro de rue' }[language];
@@ -117,13 +117,16 @@ export function LABEL_WATER_HEATING_TYPE_SPECIFIED({ language = LANGUAGES.FR } =
   return { EN: '', FR: 'Préciser le type de chauffage' }[language];
 }
 export function LABEL_BASEMENT_INCLUDED({ language = LANGUAGES.FR } = {}) {
-  return { EN: '', FR: "Est ce qu'il y'a un sous-sol ?" }[language];
+  return { EN: '', FR: "Est ce qu'il y'a un sous-sol ou un vide sanitaire ?" }[language];
+}
+export function LABEL_BASEMENT_INSULATED({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: 'Les sous-sols ou vide sanitaire sont-ils déjà isolés ?' }[language];
 }
 export function LABEL_LOW_FLOOR_INSULATION_PERIOD({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Si oui, est-ce que le plancher bas est isolé ?' }[language];
 }
 export function LABEL_BASEMENT_AREA_FOR_BOILER({ language = LANGUAGES.FR } = {}) {
-  return { EN: '', FR: "Y'a t'il une cave, un local technique ou un garage de 1.9m de hauteur et 2m² de surface pour mettre une chaudière a granulés ?" }[language];
+  return { EN: '', FR: "Disposez-vous d'un espace de 1.9m de hauteur et 2m² pour une chaudière a granulés ?" }[language];
 }
 export function LABEL_RADIATOR_TYPE({ language = LANGUAGES.FR } = {}) {
   return { EN: '', FR: 'Si radiateur, quel type ?' }[language];
@@ -146,4 +149,30 @@ export function LABEL_LOFT_COMMENTS({ language = LANGUAGES.FR } = {}) {
 
 export function LABEL_SURVEYS_SUBTITLE({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Last survey created on', FR: 'Dernier formulaire enregistré le' }[language];
+}
+
+export function LABEL_TITLE_CUSTOMER_INFORMATION({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Customer Information', FR: 'Infos Client' }[language];
+}
+export function LABEL_TITLE_INSULATION({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Insulation', FR: 'Isolation' }[language];
+}
+export function LABEL_TITLE_HEATING({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Heating', FR: 'Chauffage' }[language];
+}
+export function LABEL_TITLE_TAXATION({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Taxation', FR: 'Fiscalité' }[language];
+}
+
+export function LABEL_INSULATION_TYPE({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: "Quel point d'isolation ?" }[language];
+}
+export function LABEL_BOILER_RELEASE_YEAR({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: 'Année de la chaudière' }[language];
+}
+export function LABEL_HEATING_TYPE_COMMENTS({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: 'Commentaires sur le système de chauffage' }[language];
+}
+export function LABEL_WATER_HEATING_COMMENTS({ language = LANGUAGES.FR } = {}) {
+  return { EN: '', FR: "Commentaires sur la production d'eau chaude sanitaire" }[language];
 }

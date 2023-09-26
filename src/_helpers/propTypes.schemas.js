@@ -26,6 +26,7 @@ export const fieldPropTypes = {
   size: PropTypes.oneOf(['md', 'lg']),
   clearIconShown: PropTypes.bool,
   index: PropTypes.number,
+  preventDecimal: PropTypes.bool,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
 };

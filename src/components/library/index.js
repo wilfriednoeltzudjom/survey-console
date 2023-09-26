@@ -20,3 +20,4 @@ export * from './stack';
 export * from './table';
 export * from './text';
 export * from './statistic';
+export * from './stepper';

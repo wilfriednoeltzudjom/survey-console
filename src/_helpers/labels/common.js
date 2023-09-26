@@ -173,3 +173,10 @@ export function LABEL_TOTAL({ language = LANGUAGES.FR } = {}) {
 export function LABEL_CREATED_AT({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Created at', FR: 'Date de création' }[language];
 }
+
+export function LABEL_PREV({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Prev', FR: 'Précédent' }[language];
+}
+export function LABEL_NEXT({ language = LANGUAGES.FR } = {}) {
+  return { EN: 'Next', FR: 'Suivant' }[language];
+}

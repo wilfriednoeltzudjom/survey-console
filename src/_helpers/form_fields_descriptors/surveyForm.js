@@ -2,13 +2,18 @@ import { HEATING_TYPES, LANGUAGES } from '../enums';
 import {
   LABEL_BASEMENT_AREA_FOR_BOILER,
   LABEL_BASEMENT_INCLUDED,
+  LABEL_BASEMENT_INSULATED,
   LABEL_BIRTHDATE,
+  LABEL_BOILER_RELEASE_YEAR,
   LABEL_BUILDING_AGE,
   LABEL_CITY,
   LABEL_COMMENTS,
+  LABEL_EMAIL,
   LABEL_FIREPLACE_INCLUDED,
   LABEL_FULL_NAME,
   LABEL_HEATING_TYPE,
+  LABEL_HEATING_TYPE_COMMENTS,
+  LABEL_INSULATION_TYPE,
   LABEL_LIVING_SPACE_AREA,
   LABEL_LOFT_AREA,
   LABEL_LOFT_COMMENTS,
@@ -32,6 +37,7 @@ import {
   LABEL_TAX_NOTICE_NUMBER,
   LABEL_TAX_NOTICE_REFERENCE,
   LABEL_WALL_INSULATION_TYPE,
+  LABEL_WATER_HEATING_COMMENTS,
   LABEL_WATER_HEATING_TYPE,
   LABEL_WATER_HEATING_TYPE_SPECIFIED,
 } from '../labels';
@@ -255,7 +261,6 @@ export default function ({ language = LANGUAGES.FR } = {}) {
       property: 'fireplaceIncluded',
       type: 'boolean',
       label: LABEL_FIREPLACE_INCLUDED({ language }),
-      required: true,
     },
     {
       property: 'phone',
@@ -265,9 +270,44 @@ export default function ({ language = LANGUAGES.FR } = {}) {
       required: true,
     },
     {
+      property: 'email',
+      type: 'string',
+      dataType: 'email',
+      label: LABEL_EMAIL({ language }),
+    },
+    {
       property: 'comments',
       type: 'string',
       label: LABEL_COMMENTS({ language }),
+    },
+    {
+      property: 'insulationType',
+      type: 'string',
+      label: LABEL_INSULATION_TYPE({ language }),
+      required: true,
+    },
+    {
+      property: 'basementInsulated',
+      type: 'boolean',
+      label: LABEL_BASEMENT_INSULATED({ language }),
+      required({ basementIncluded }) {
+        return basementIncluded;
+      },
+    },
+    {
+      property: 'boilerReleaseYear',
+      type: 'number',
+      label: LABEL_BOILER_RELEASE_YEAR({ language }),
+    },
+    {
+      property: 'heatingTypeComments',
+      type: 'string',
+      label: LABEL_HEATING_TYPE_COMMENTS({ language }),
+    },
+    {
+      property: 'waterHeatingComments',
+      type: 'string',
+      label: LABEL_WATER_HEATING_COMMENTS({ language }),
     },
   ];
 }

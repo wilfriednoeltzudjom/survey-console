@@ -98,7 +98,7 @@ function Surveys() {
       </SurveysStyled>
 
       {surveyModal.shown && (
-        <Modal shown title={MODAL_TITLE_SURVEY()} onHide={surveyModal.handleHide}>
+        <Modal shown size="lg" title={MODAL_TITLE_SURVEY()} onHide={surveyModal.handleHide}>
           <SurveyForm mode={surveyForm.mode} formState={surveyForm.formState} formErrors={surveyForm.formErrors} onChange={surveyForm.handleChange} onSubmit={handleSubmit} />
         </Modal>
       )}

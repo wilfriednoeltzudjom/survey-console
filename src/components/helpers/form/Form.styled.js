@@ -88,3 +88,16 @@ export const FormText = styled.span`
   color: ${colors.gray};
   margin-bottom: 0.25rem;
 `;
+
+export const FormSection = styled.section`
+  z-index: ${getFormSectionZIndex};
+  display: ${getFormSectionDisplay};
+`;
+
+function getFormSectionZIndex({ active }) {
+  return active ? 'initial' : -1;
+}
+
+function getFormSectionDisplay({ active }) {
+  return active ? 'block' : 'none';
+}

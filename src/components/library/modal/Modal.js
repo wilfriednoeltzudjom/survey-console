@@ -39,7 +39,7 @@ export function Modal({ shown = false, title, size = 'md', closable = true, hide
 Modal.propTypes = {
   shown: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xs', 'sm', 'md']),
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   closable: PropTypes.bool,
   hideOnOverlayClick: PropTypes.bool,
   actions: PropTypes.element,

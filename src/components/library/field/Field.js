@@ -38,6 +38,7 @@ export function Field({
   size = 'md',
   weight = 'regular',
   index,
+  preventDecimal = false,
   onChange,
   onBlur,
   ...restProps
@@ -67,6 +68,7 @@ export function Field({
         fluid={fluid}
         weight={weight}
         index={index}
+        preventDecimal={preventDecimal}
         onChange={handleChange}
         onBlur={handleBlur}
         {...restProps}

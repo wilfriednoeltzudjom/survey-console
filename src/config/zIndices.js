@@ -9,4 +9,5 @@ export default {
   dialog: 1700,
   loading: 1800,
   tooltip: 1900,
+  sticky: 2000,
 };
