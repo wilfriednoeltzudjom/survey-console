@@ -9,6 +9,7 @@ import {
   LABEL_MENU_ACTION_DELETE,
   LABEL_MENU_ACTION_PRINT,
   LABEL_MENU_ACTION_REGENERATE,
+  LABEL_NOT_PROVIDED,
   LABEL_NO_SURVEYS,
   LABEL_PREMIUM_PROFILE,
   LABEL_REFERENCE,
@@ -63,11 +64,13 @@ export default function SurveysBody({ surveys = [], requesting = false, profile 
             title: LABEL_TAX_NOTICE_NUMBER(),
             key: 'taxNoticeNumber',
             dataIndex: 'taxNoticeNumber',
+            defaultValue: LABEL_NOT_PROVIDED(),
           },
           {
             title: LABEL_TAX_NOTICE_REFERENCE(),
             key: 'taxNoticeReference',
             dataIndex: 'taxNoticeReference',
+            defaultValue: LABEL_NOT_PROVIDED({ feminine: true }),
           },
           {
             title: LABEL_PREMIUM_PROFILE(),

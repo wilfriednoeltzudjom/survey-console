@@ -180,3 +180,7 @@ export function LABEL_PREV({ language = LANGUAGES.FR } = {}) {
 export function LABEL_NEXT({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Next', FR: 'Suivant' }[language];
 }
+
+export function LABEL_NOT_PROVIDED({ language = LANGUAGES.FR, feminine = true } = {}) {
+  return { EN: 'Not provided', FR: 'Non renseigné'.concat(feminine ? 'e' : '') }[language];
+}
