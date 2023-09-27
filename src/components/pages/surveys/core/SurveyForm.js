@@ -113,19 +113,6 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
 
         <Form.Section active={isSectionActive(steps[0])}>
           <Form.Group>
-            <Field
-              fluid
-              type="select"
-              name="operationType"
-              label={LABEL_OPERATION_TYPE()}
-              options={formatSelectOptions(OPERATION_TYPES)}
-              defaultOption={toSelectOption(formState.operationType)}
-              error={formErrors.operationType}
-              disabled={mode === FORM_MODES.EDITION}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group>
             <Field fluid type="text" name="fullName" label={LABEL_FULL_NAME()} defaultValue={formState.fullName} error={formErrors.fullName} onChange={onChange} />
           </Form.Group>
           <Form.Group>
@@ -543,6 +530,19 @@ export default function SurveyForm({ mode, formState, formErrors, onChange, onSu
           </Form.Group>
           <Form.Group>
             <Field fluid type="text" name="email" label={LABEL_EMAIL()} defaultValue={formState.email} error={formErrors.email} onChange={onChange} />
+          </Form.Group>
+          <Form.Group>
+            <Field
+              fluid
+              type="select"
+              name="operationType"
+              label={LABEL_OPERATION_TYPE()}
+              options={formatSelectOptions(OPERATION_TYPES)}
+              defaultOption={toSelectOption(formState.operationType)}
+              error={formErrors.operationType}
+              disabled={mode === FORM_MODES.EDITION}
+              onChange={onChange}
+            />
           </Form.Group>
         </Form.Section>
 

@@ -133,17 +133,11 @@ export default function ({ language = LANGUAGES.FR } = {}) {
           property: 'taxNoticeNumber',
           type: 'string',
           label: LABEL_TAX_NOTICE_NUMBER({ language }),
-          required({ currentIndex }) {
-            return currentIndex === 0;
-          },
         },
         {
           property: 'taxNoticeReference',
           type: 'string',
           label: LABEL_TAX_NOTICE_REFERENCE({ language }),
-          required({ currentIndex }) {
-            return currentIndex === 0;
-          },
         },
         {
           property: 'referenceTaxIncome',
