@@ -72,7 +72,9 @@ function Surveys() {
     const { formState } = surveyForm;
     const { validForm, formErrors } = formValidatorHelper.validateForm(formState, surveyFormFieldsDescriptor());
     surveyForm.setFormErrors(formErrors);
-    if (validForm) dispatch(createSurvey({ formState, onSurveyCreated: surveyModal.handleHide }));
+    if (validForm) {
+      dispatch(createSurvey({ formState, onSurveyCreated: surveyModal.handleHide }));
+    }
   }
 
   function processDeleteSurvey(survey) {

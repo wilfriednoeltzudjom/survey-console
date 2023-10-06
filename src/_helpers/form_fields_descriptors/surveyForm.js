@@ -151,9 +151,6 @@ export default function ({ language = LANGUAGES.FR } = {}) {
           property: 'birthDate',
           type: 'object',
           label: LABEL_BIRTHDATE({ language }),
-          required({ currentIndex }) {
-            return currentIndex === 0;
-          },
         },
       ],
     },
