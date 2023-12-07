@@ -33,7 +33,7 @@ export function Header() {
     <HeaderStyled>
       <main>
         <section>
-          <Text>POEYA Console</Text>
+          <Text>LA REGIE DES ENERGIES</Text>
           <Breadcrumb />
         </section>
 

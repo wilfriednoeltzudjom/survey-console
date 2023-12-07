@@ -1,6 +1,6 @@
 import { LANGUAGES } from '../enums';
 
-export const LABEL_APP_NAME = 'POEYA Console';
+export const LABEL_APP_NAME = 'LA REGIE DES ENERGIES';
 
 export function LABEL_ADDED_AT({ language = LANGUAGES.FR } = {}) {
   return { EN: 'Added on', FR: 'Ajouté le' }[language];
